@@ -1,6 +1,6 @@
 class Solution {
     private final int MAX = 1_000_000;
-    
+
 	// Useful for not sparse graphs (E << V^2)
 	// Time complexity: O((V + E) * logV)
 	// adjList: v -> [(u_j, weight_j),... , (u_k, weight_k)]
@@ -8,7 +8,7 @@ class Solution {
         int n = adjList.length;
         int distTo[] = new int[n];
 		//int[] parent = new parent[n];
-		
+
         for (int v = 0; v < n; v++)
             distTo[v] = MAX;
         distTo[s] = 0;
@@ -17,9 +17,9 @@ class Solution {
         PriorityQueue<int[]> pq = new PriorityQueue<int[]>((e1, e2) -> e1[1] - e2[1]);
         pq.offer(new int[] { s, 0 });
 
-        while (!pq.isEmpty()) {            
+        while (!pq.isEmpty()) {
             int v = pq.poll()[0];
-            
+
             for (int[] edge : adjList[v]) {
                 int u = edge[0];
                 int w = edge[1];
@@ -30,7 +30,7 @@ class Solution {
                 }
             }
         }
-        
+
         return distTo;
     }
 }

@@ -1,14 +1,14 @@
 class Solution {
     private final int MAX = 1_000_000;
-	
+
 	/*
 		graph[u][v] is the weight of the edge from vertex u to vertex v
 		graph[u][v] = MAX if graph doesn't have edge u->v
 	*/
     public int[][] floydWarshall(int[][] graph) {
         int n = graph.length;
-        int dist[][] = new int[n][n];        
-        
+        int dist[][] = new int[n][n];
+
         for (int v = 0; v < n; v++) {
             for (int u = 0; u < n; u++) {
                 dist[v][u] = graph[v][u];
@@ -21,9 +21,9 @@ class Solution {
                     continue;
                 }
                 for (int u = 0; u < n; u++) {
-                    dist[v][u] = Math.min(dist[v][u], dist[v][w] + dist[w][u]);                    
+                    dist[v][u] = Math.min(dist[v][u], dist[v][w] + dist[w][u]);
                 }
-				
+
 				// check for negative cycle
                 // if (dist[v][v] < 0) {
                 //    hasNegativeCycle = true;
@@ -31,7 +31,7 @@ class Solution {
                 //}
             }
         }
-        
+
         return dist;
     }
 }

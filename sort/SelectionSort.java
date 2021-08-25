@@ -9,18 +9,18 @@ class Solution {
                 nums[min] = tmp;
             }
         }
-        
+
         return nums;
     }
-    
-    private int findMin(int[] nums, int lo, int hi) {        
+
+    private int findMin(int[] nums, int lo, int hi) {
         int min = lo;
         for (int i = lo + 1; i <= hi; i++) {
             if (nums[i] < nums[min]) {
                 min = i;
             }
         }
-        
+
         return min;
     }
 }

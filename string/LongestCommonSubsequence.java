@@ -15,16 +15,16 @@ class Solution {
                 }
             }
         }
-        
+
         return dp[m][n];
     }
-	
+
 	// Get the length of longest common subsequence
 	// DP approach with array n. Time: O(m*n), Space: O(n)
     public int longestCommonSubsequenceLength2(String s1, String s2) {
         int m = s1.length();
-        int n = s2.length(); 
-        
+        int n = s2.length();
+
         int[] dp = new int[n + 1];
         for (int i = 0; i <= m; i++) {
             int[] temp = new int[n + 1];
@@ -38,10 +38,10 @@ class Solution {
             }
             dp = temp;
         }
-        
+
         return dp[n];
     }
-	
+
 	// Get the longest common subsequence
 	// DP approach with matrix m*n. Time: O(m*n), Space: O(m*n)
 	public String longestCommonSubstring(String s1, String s2){
@@ -54,7 +54,7 @@ class Solution {
         int endIndex = -1;
         for (int i = 0; i < m; i++){
             for (int j = 0; j < n; j++){
-                if (s1.charAt(i) == s2.charAt(j)) {                    
+                if (s1.charAt(i) == s2.charAt(j)) {
                     if (i == 0 || j == 0) {
                         dp[i][j] = 1;
                     } else {
@@ -70,7 +70,7 @@ class Solution {
 
             }
         }
-        
+
         // We want String upto endIndex, we are using endIndex+1 in substring.
         return s1.substring(endIndex - max + 1, endIndex + 1);
     }

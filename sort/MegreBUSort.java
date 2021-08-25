@@ -1,10 +1,10 @@
-class Solution {    
-    public int[] sortArray(int[] nums) {         
+class Solution {
+    public int[] sortArray(int[] nums) {
         mergeBUSort(nums);
         return nums;
     }
 
-    private void mergeBUSort(int[] nums) {        
+    private void mergeBUSort(int[] nums) {
         int n = nums.length;
         int[] aux = new int[n];
         for (int len = 1; len < n; len *= 2) {
@@ -15,7 +15,7 @@ class Solution {
             }
         }
     }
-    
+
     private void merge(int[] nums, int[] aux, int lo, int mid, int hi) {
         System.arraycopy(nums, lo, aux, lo, hi - lo + 1);
 
