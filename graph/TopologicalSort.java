@@ -4,14 +4,16 @@ class Solution {
     private final int GRAY = 1;
     private final int BLACK = 2;
 
-    public boolean hasCycle(List<Integer>[] adjList, int[] colors, int v, LinkedList<Integer> order) {
+    public boolean dfs(List<Integer>[] adjList, int[] colors, int v, LinkedList<Integer> order) {
         colors[v] = GRAY;
         for (int u : adjList[v]) {
             if (colors[u] == GRAY) {
+				// has cycle
                 return true;
             }
 
-            if (colors[u] == WHITE && hasCycle(adjList, colors, u, order)) {
+            if (colors[u] == WHITE && dfs(adjList, colors, u, order)) {
+				// has cycle
                 return true;
             }
         }
@@ -29,8 +31,8 @@ class Solution {
         Arrays.fill(colors, WHITE);
         for (int v = 0; v < n; v++) {
             if (colors[v] != WHITE) continue;
-            if (hasCycle(adjList, colors, v, toporder)) {
-                return new int[0];
+            if (dfs(adjList, colors, v, toporder)) {
+                return null;
             }
         }
 
