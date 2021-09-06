@@ -12,7 +12,7 @@ public class Prim {
 		int[] parent = new int[n];
 
 		Arrays.fill(distTo, MAX);
-		Arrays.fill(parent, -1)
+		Arrays.fill(parent, -1);
 		distTo[0] = 0;		
 
 		PriorityQueue<int[]> pq = new PriorityQueue<int[]>((e1, e2) -> e1[1] - e2[1]);
