@@ -1,9 +1,9 @@
 public class Tarjan {
-	private int pre;   // preorder number counter
+	private int pre; // preorder number counter
 	private int count; // number of strongly-connected components
 
 	private boolean[] visited; // visited[v] = has v been visited?
-	private int[] id;  // id[v] = id of strong component containing v
+	private int[] id; // id[v] = id of strong component containing v
 	private int[] low; // low[v] = low number of v
 
 	private Deque<Integer> stack;

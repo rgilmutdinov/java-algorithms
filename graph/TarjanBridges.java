@@ -1,9 +1,10 @@
 public class Tarjan {
-	private int[] disc;  // disc[v] = discovered time of v
-	private int[] low;   // low[v] = low number of v
+	private int[] disc; // disc[v] = discovered time of v
+	private int[] low; // low[v] = low number of v
 	private List<int[]> bridges; // bridges
 
 	private int time;
+
 	public Tarjan(List<Integer>[] adjList) {
 		int n = adjList.length;
 
@@ -30,7 +31,8 @@ public class Tarjan {
 		low[v] = disc[v] = time++;
 
 		for (int u : adjList[v]) {
-			if (u == parent) continue;
+			if (u == parent)
+				continue;
 			if (disc[u] == 0) {
 				dfs(adjList, u, v);
 			}

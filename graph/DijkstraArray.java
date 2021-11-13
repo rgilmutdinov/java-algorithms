@@ -1,18 +1,18 @@
 class Solution {
     private final int MAX = 1_000_000;
 
-	// Useful for dense graphs (E ~ V^2)
-	// Time complexity: O(V^2 + E)
-	// adjList: v -> [(u_j, weight_j),... , (u_k, weight_k)]
+    // Useful for dense graphs (E ~ V^2)
+    // Time complexity: O(V^2 + E)
+    // adjList: v -> [(u_j, weight_j),... , (u_k, weight_k)]
     public int[] dijkstra(List<int[]>[] adjList, int s) {
         int n = adjList.length;
         int distTo[] = new int[n];
-		//int[] parent = new parent[n];
+        // int[] parent = new parent[n];
 
         for (int v = 0; v < n; v++)
             distTo[v] = MAX;
         distTo[s] = 0;
-		//parent[s] = -1;
+        // parent[s] = -1;
 
         boolean[] used = new boolean[n];
 
@@ -32,8 +32,8 @@ class Solution {
                 int weight = edge[1];
                 if (distTo[u] > distTo[v] + weight) {
                     distTo[u] = distTo[v] + weight;
-					//parent[u] = v;
-				}
+                    // parent[u] = v;
+                }
             }
         }
 

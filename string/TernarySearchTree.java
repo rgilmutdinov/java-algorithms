@@ -14,7 +14,7 @@ public class TernarySearchTree {
 
     TreeNode root;
 
-	// Time complexity: O(log N)
+    // Time complexity: O(log N)
     public void insert(String str) {
         root = insert(root, str, 0);
     }
@@ -42,7 +42,7 @@ public class TernarySearchTree {
         return node;
     }
 
-	// Time complexity: O(log N) - actually: 1.39 lg N
+    // Time complexity: O(log N) - actually: 1.39 lg N
     public boolean search(String str) {
         return search(root, str, 0);
     }

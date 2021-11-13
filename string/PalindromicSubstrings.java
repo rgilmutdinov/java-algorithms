@@ -2,14 +2,14 @@
 // https://leetcode.com/problems/palindromic-substrings/
 
 class Solution1 {
-    public class RollingHashes {            
+    public class RollingHashes {
         private static final long MOD = 1_000_000_007L;
         private static final long BASE = 29L;
 
         private long[] powers; // precomputed powers of R
         private long[] hashes; // precomputed hashes of prefixes
 
-        public RollingHashes(String text) {            
+        public RollingHashes(String text) {
             int n = text.length();
 
             hashes = new long[n + 1];
@@ -31,7 +31,7 @@ class Solution1 {
     public int countSubstrings(String s) {
         RollingHashes fgen = new RollingHashes(s);
         RollingHashes bgen = new RollingHashes(new StringBuilder(s).reverse().toString());
-        
+
         int count = 0;
         int n = s.length();
         for (int len = 1; len <= n; len++) {
@@ -43,23 +43,23 @@ class Solution1 {
                 }
             }
         }
-            
+
         return count;
     }
 }
 
 class Solution2 {
-	private int countPalindroms(String s, int lo, int hi) {
-        int n = s.length();        
+    private int countPalindroms(String s, int lo, int hi) {
+        int n = s.length();
         while (lo >= 0 && hi < n && s.charAt(lo) == s.charAt(hi)) {
             lo--;
             hi++;
         }
-        
+
         return (hi - lo) / 2;
     }
-    
-	// Expand around possible centers
+
+    // Expand around possible centers
     public int countSubstrings(String s) {
         int count = 0;
         for (int i = 0; i < s.length(); i++) {

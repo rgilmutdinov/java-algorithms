@@ -1,9 +1,9 @@
 class Solution {
     private final int MAX = 1_000_000;
 
-	// n - number of vertices
-	// edges[v][u] - weight of edge v->u
-	// s - starting vertex
+    // n - number of vertices
+    // edges[v][u] - weight of edge v->u
+    // s - starting vertex
     public int[] bellman(int n, int[][] edges, int s) {
         int dist[] = new int[n];
         Arrays.fill(dist, MAX);

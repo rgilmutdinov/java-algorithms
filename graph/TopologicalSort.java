@@ -8,12 +8,12 @@ class Solution {
         colors[v] = GRAY;
         for (int u : adjList[v]) {
             if (colors[u] == GRAY) {
-				// has cycle
+                // has cycle
                 return true;
             }
 
             if (colors[u] == WHITE && dfs(adjList, colors, u, order)) {
-				// has cycle
+                // has cycle
                 return true;
             }
         }
@@ -23,23 +23,24 @@ class Solution {
         return false;
     }
 
-	public List<Integer> topsortDfs(List<Integer>[] adjList) {
-		int n = adjList.length;
+    public List<Integer> topsortDfs(List<Integer>[] adjList) {
+        int n = adjList.length;
 
-		LinkedList<Integer> toporder = new LinkedList<>();
+        LinkedList<Integer> toporder = new LinkedList<>();
         int[] colors = new int[n];
         Arrays.fill(colors, WHITE);
         for (int v = 0; v < n; v++) {
-            if (colors[v] != WHITE) continue;
+            if (colors[v] != WHITE)
+                continue;
             if (dfs(adjList, colors, v, toporder)) {
                 return null;
             }
         }
 
-		return toporder;
-	}
+        return toporder;
+    }
 
-	public int[] topsortIndegree(List<Integer>[] adjList) {
+    public int[] topsortIndegree(List<Integer>[] adjList) {
         int n = adjList.length;
 
         int[] indegree = new int[n];

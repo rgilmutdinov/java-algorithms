@@ -4,20 +4,21 @@ public class Solution {
         while (i >= 0 && nums[i + 1] <= nums[i]) {
             i--;
         }
-		
-		if (i < 0) {
-			// reverse(nums, 0, nums.length - 1); // next permutation will be the first of lexicographical order
-			return false;		
-		}
-        
-		int j = nums.length - 1;
-		while (nums[j] <= nums[i]) {
-			j--;
-		}
-		
-		swap(nums, i, j);        
+
+        if (i < 0) {
+            // reverse(nums, 0, nums.length - 1); // next permutation will be the first of
+            // lexicographical order
+            return false;
+        }
+
+        int j = nums.length - 1;
+        while (nums[j] <= nums[i]) {
+            j--;
+        }
+
+        swap(nums, i, j);
         reverse(nums, i + 1);
-		return true;
+        return true;
     }
 
     private void reverse(int[] nums, int start) {

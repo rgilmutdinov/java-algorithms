@@ -1,6 +1,6 @@
 public class QuickUnionUF {
-    private int[] parent;  // parent[i] = parent of i
-    private int count;     // number of components
+    private int[] parent; // parent[i] = parent of i
+    private int count; // number of components
 
     public QuickUnionUF(int n) {
         parent = new int[n];
@@ -13,7 +13,7 @@ public class QuickUnionUF {
     public int count() {
         return count;
     }
-  
+
     public int find(int p) {
         validate(p);
         while (p != parent[p])
@@ -25,7 +25,7 @@ public class QuickUnionUF {
     private void validate(int p) {
         int n = parent.length;
         if (p < 0 || p >= n) {
-            throw new IllegalArgumentException("index " + p + " is not between 0 and " + (n-1));
+            throw new IllegalArgumentException("index " + p + " is not between 0 and " + (n - 1));
         }
     }
 
@@ -37,8 +37,9 @@ public class QuickUnionUF {
     public void union(int p, int q) {
         int rootP = find(p);
         int rootQ = find(q);
-        if (rootP == rootQ) return;
-        parent[rootP] = rootQ; 
+        if (rootP == rootQ)
+            return;
+        parent[rootP] = rootQ;
         count--;
     }
 
@@ -48,7 +49,8 @@ public class QuickUnionUF {
         while (!StdIn.isEmpty()) {
             int p = StdIn.readInt();
             int q = StdIn.readInt();
-            if (uf.find(p) == uf.find(q)) continue;
+            if (uf.find(p) == uf.find(q))
+                continue;
             uf.union(p, q);
             StdOut.println(p + " " + q);
         }

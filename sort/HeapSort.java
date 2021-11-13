@@ -16,8 +16,10 @@ class Solution {
     private void sink(int[] nums, int k, int hi) {
         while (2 * k + 1 <= hi) {
             int j = 2 * k + 1;
-            if (j < hi && nums[j] < nums[j + 1]) j++;
-            if (nums[k] >= nums[j]) break;
+            if (j < hi && nums[j] < nums[j + 1])
+                j++;
+            if (nums[k] >= nums[j])
+                break;
             swap(nums, k, j);
             k = j;
         }

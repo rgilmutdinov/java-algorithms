@@ -13,7 +13,7 @@ public class Prim {
 
 		Arrays.fill(distTo, MAX);
 		Arrays.fill(parent, -1);
-		distTo[0] = 0;		
+		distTo[0] = 0;
 
 		PriorityQueue<int[]> pq = new PriorityQueue<int[]>((e1, e2) -> e1[1] - e2[1]);
 		pq.offer(new int[] { 0, 0 });
@@ -31,7 +31,7 @@ public class Prim {
 			count++;
 
 			if (parent[v] != -1) {
-				mst.add(new int[] { v, parent[v]});
+				mst.add(new int[] { v, parent[v] });
 			}
 
 			for (int[] edge : adjList[v]) {

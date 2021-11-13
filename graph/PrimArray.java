@@ -1,19 +1,19 @@
 class Solution {
     private final int MAX = Integer.MAX_VALUE >> 1;
-    
-	// Time complexity: O(V^2)
+
+    // Time complexity: O(V^2)
     public int prim(List<int[]>[] adjList, int s) {
         int n = adjList.length;
         int[] distTo = new int[n];
-		//int[] parent = new parent[n];
+        // int[] parent = new parent[n];
 
-         Arrays.fill(distTo, MAX);
-        //Arrays.fill(parent, -1);
-        distTo[s] = 0;	
+        Arrays.fill(distTo, MAX);
+        // Arrays.fill(parent, -1);
+        distTo[s] = 0;
 
         boolean[] used = new boolean[n];
 
-		int weight = 0;
+        int weight = 0;
         int count = 0;
         for (int i = 0; i < n; i++) {
             int v = -1;
@@ -25,15 +25,15 @@ class Solution {
                 break;
 
             used[v] = true;
-			weight += distTo[v];
+            weight += distTo[v];
             count++;
-			
+
             for (int[] edge : adjList[v]) {
                 int u = edge[0];
                 int w = edge[1];
                 if (distTo[u] > w) {
                     distTo[u] = w;
-					//parent[u] = v;
+                    // parent[u] = v;
                 }
             }
         }

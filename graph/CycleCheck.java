@@ -20,18 +20,19 @@ class Solution {
         return false;
     }
 
-	public boolean hasCycle(List<Integer>[] adjList) {
-		int n = adjList.length;
+    public boolean hasCycle(List<Integer>[] adjList) {
+        int n = adjList.length;
 
-		int[] colors = new int[n];
-		Arrays.fill(colors, WHITE);
+        int[] colors = new int[n];
+        Arrays.fill(colors, WHITE);
 
-		for (int v = 0; v < n; v++) {
-			if (colors[v] != WHITE) continue;
-			if (hasCycle(adjList, colors, v)) {
-				return true;
-			}
-		}
-		return false;
-	}
+        for (int v = 0; v < n; v++) {
+            if (colors[v] != WHITE)
+                continue;
+            if (hasCycle(adjList, colors, v)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

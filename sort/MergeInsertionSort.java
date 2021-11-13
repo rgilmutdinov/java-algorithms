@@ -1,5 +1,6 @@
 class Solution {
     private static final int CUTOFF = 7;
+
     public int[] sortArray(int[] nums) {
         int n = nums.length;
         int[] aux = new int[n];
@@ -8,7 +9,8 @@ class Solution {
     }
 
     private void mergeSort(int[] nums, int[] aux, int lo, int hi) {
-        if (lo >= hi) return;
+        if (lo >= hi)
+            return;
         if (hi - lo + 1 <= CUTOFF) {
             insertionSort(nums, lo, hi);
             return;
@@ -26,7 +28,7 @@ class Solution {
         int i = lo;
         int j = mid + 1;
         for (int k = lo; k <= hi; k++) {
-            if      (i > mid)         nums[k] = aux[j++];
+            if (i > mid)              nums[k] = aux[j++];
             else if (j > hi)          nums[k] = aux[i++];
             else if (aux[i] < aux[j]) nums[k] = aux[i++];
             else                      nums[k] = aux[j++];

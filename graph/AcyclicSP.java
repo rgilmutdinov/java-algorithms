@@ -1,10 +1,10 @@
 public class AcyclicSP {
 	public static final int MAX = Integer.MAX_VALUE >> 1;
-	private int[] distTo;   // distTo[v] = distance  of shortest s->v path
-	private int[] edgeTo;   // edgeTo[v] = last vertex on shortest s->v path
+	private int[] distTo; // distTo[v] = distance of shortest s->v path
+	private int[] edgeTo; // edgeTo[v] = last vertex on shortest s->v path
 
 	private boolean hasCycles = false;
-	
+
 	// This shortest-paths algorithm for edge-weighted DAGs uses a topological sort
 	public AcyclicSP(List<int[]>[] adjList, int s) {
 		int n = adjList.length;
@@ -60,7 +60,8 @@ public class AcyclicSP {
 		int[] colors = new int[n];
 		Arrays.fill(colors, WHITE);
 		for (int v = 0; v < n; v++) {
-			if (colors[v] != WHITE) continue;
+			if (colors[v] != WHITE)
+				continue;
 			if (dfs(adjList, colors, v, toporder)) {
 				return null;
 			}
@@ -70,11 +71,11 @@ public class AcyclicSP {
 	}
 
 	// relax edge e
-	private void relax(int v, int w, int weight) {        
+	private void relax(int v, int w, int weight) {
 		if (distTo[w] > distTo[v] + weight) {
 			distTo[w] = distTo[v] + weight;
 			edgeTo[w] = v;
-		}       
+		}
 	}
 
 	public int distTo(int v) {
@@ -84,13 +85,14 @@ public class AcyclicSP {
 	public boolean hasCycles() {
 		return hasCycles;
 	}
-	
+
 	public boolean hasPathTo(int v) {
 		return distTo[v] < MAX;
 	}
 
 	public List<Integer> pathTo(int v) {
-		if (!hasPathTo(v)) return null;
+		if (!hasPathTo(v))
+			return null;
 		LinkedList<Integer> path = new LinkedList<>();
 		for (int w = edgeTo[v]; w != -1; w = edgeTo[w]) {
 			path.addFirst(w);

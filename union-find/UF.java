@@ -1,11 +1,12 @@
 public class UF {
 
-    private int[] parent;  // parent[i] = parent of i
-    private byte[] rank;   // rank[i] = rank of subtree rooted at i (never more than 31)
-    private int count;     // number of components
+    private int[] parent; // parent[i] = parent of i
+    private byte[] rank; // rank[i] = rank of subtree rooted at i (never more than 31)
+    private int count; // number of components
 
     public UF(int n) {
-        if (n < 0) throw new IllegalArgumentException();
+        if (n < 0)
+            throw new IllegalArgumentException();
         count = n;
         parent = new int[n];
         rank = new byte[n];
@@ -18,7 +19,7 @@ public class UF {
     public int find(int p) {
         validate(p);
         while (p != parent[p]) {
-            parent[p] = parent[parent[p]];    // path compression by halving
+            parent[p] = parent[parent[p]]; // path compression by halving
             p = parent[p];
         }
         return p;
@@ -27,7 +28,7 @@ public class UF {
     public int count() {
         return count;
     }
-  
+
     @Deprecated
     public boolean connected(int p, int q) {
         return find(p) == find(q);
@@ -36,10 +37,11 @@ public class UF {
     public void union(int p, int q) {
         int rootP = find(p);
         int rootQ = find(q);
-        if (rootP == rootQ) return;
+        if (rootP == rootQ)
+            return;
 
         // make root of smaller rank point to root of larger rank
-        if      (rank[rootP] < rank[rootQ]) parent[rootP] = rootQ;
+        if (rank[rootP] < rank[rootQ])      parent[rootP] = rootQ;
         else if (rank[rootP] > rank[rootQ]) parent[rootQ] = rootP;
         else {
             parent[rootQ] = rootP;
@@ -52,7 +54,7 @@ public class UF {
     private void validate(int p) {
         int n = parent.length;
         if (p < 0 || p >= n) {
-            throw new IllegalArgumentException("index " + p + " is not between 0 and " + (n-1));  
+            throw new IllegalArgumentException("index " + p + " is not between 0 and " + (n - 1));
         }
     }
 
@@ -62,7 +64,8 @@ public class UF {
         while (!StdIn.isEmpty()) {
             int p = StdIn.readInt();
             int q = StdIn.readInt();
-            if (uf.find(p) == uf.find(q)) continue;
+            if (uf.find(p) == uf.find(q))
+                continue;
             uf.union(p, q);
             StdOut.println(p + " " + q);
         }

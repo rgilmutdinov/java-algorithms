@@ -5,6 +5,7 @@ class Solution {
     private final int BLACK = 2;
 
     private List<List<Integer>> cycles = new ArrayList<>();
+
     private void findCycles(List<Integer>[] adjList, int u, int p, int[] color, int[] parents) {
         // already (completely) visited vertex.
         if (color[u] == BLACK) {

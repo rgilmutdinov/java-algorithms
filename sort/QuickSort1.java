@@ -7,7 +7,8 @@ class Solution {
     }
 
     private void quickSort(int[] nums, int lo, int hi) {
-        if (lo >= hi) return;
+        if (lo >= hi)
+            return;
 
         int mid = partition(nums, lo, hi);
         quickSort(nums, lo, mid);

@@ -7,7 +7,7 @@ class Solution {
 
         currPath.push(v); // euler path starts from v
 
-        while (!currPath.isEmpty()){
+        while (!currPath.isEmpty()) {
             int u = currPath.peekLast();
 
             if (adjList[u].size() == 0) {

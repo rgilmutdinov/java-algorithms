@@ -8,7 +8,7 @@ class Solution {
         return hi - lo - 1;
     }
 
-	// Expand Around Center O(n^2)
+    // Expand Around Center O(n^2)
     public String longestPalindrome(String s) {
         int maxlen = 0;
         int begin = 0;
@@ -26,8 +26,8 @@ class Solution {
         return s.substring(begin, begin + maxlen);
     }
 
-	// DP solution. Space: O(n^2), Time: O(n^2)
-	public String longestPalindromeDP(String s) {
+    // DP solution. Space: O(n^2), Time: O(n^2)
+    public String longestPalindromeDP(String s) {
         int n = s.length();
         boolean[][] dp = new boolean[n][n];
 
@@ -48,42 +48,43 @@ class Solution {
 
         return s.substring(begin, begin + maxlen);
     }
-	
-	// Polynomial hashing solution. Time: O(n^2), Space:  O(n)
-	public String longestPalindromeRH(String s) {        
+
+    // Polynomial hashing solution. Time: O(n^2), Space: O(n)
+    public String longestPalindromeRH(String s) {
         int n = s.length();
-        
-        if (n == 0) return "";
-        
+
+        if (n == 0)
+            return "";
+
         long p = 31L;
         long mod = 1_000_000_009L;
-        
+
         long[] powers = new long[n + 1];
         long[] fh = new long[n + 1]; // forward hash
         long[] bh = new long[n + 1]; // backward hash
-        
+
         Arrays.fill(powers, 1);
         for (int i = 0; i < n; i++) {
-            long c = s.charAt(i);            
+            long c = s.charAt(i);
             fh[i + 1] = (fh[i] + (c * powers[i])) % mod;
             bh[i + 1] = ((p * bh[i]) + c) % mod;
             powers[i + 1] = (powers[i] * p) % mod;
         }
-        
+
         for (int len = n; len >= 1; len--) {
             for (int offset = 0; offset <= n - len; offset++) {
-                
+
                 long hash1 = (fh[len + offset] - fh[offset] + mod) % mod;
-                
-                long hash2 = (powers[offset] * bh[len + offset] - powers[len + offset] * bh[offset]) % mod;                
+
+                long hash2 = (powers[offset] * bh[len + offset] - powers[len + offset] * bh[offset]) % mod;
                 hash2 = (hash2 + mod) % mod;
-                
+
                 if (hash1 == hash2) {
                     return s.substring(offset, offset + len);
                 }
             }
         }
-        
+
         return "";
     }
 }

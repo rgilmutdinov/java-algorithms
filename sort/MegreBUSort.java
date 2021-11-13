@@ -22,7 +22,7 @@ class Solution {
         int i = lo;
         int j = mid + 1;
         for (int k = lo; k <= hi; k++) {
-            if      (i > mid)         nums[k] = aux[j++];
+            if (i > mid)              nums[k] = aux[j++];
             else if (j > hi)          nums[k] = aux[i++];
             else if (aux[i] < aux[j]) nums[k] = aux[i++];
             else                      nums[k] = aux[j++];

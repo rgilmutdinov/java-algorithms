@@ -3,9 +3,9 @@ class Solution {
         if (lo > hi) return -1;
 
         hi++;
-        int end = hi;                
-        while (lo < hi) {            
-            int mid = lo + (hi - lo) / 2;            
+        int end = hi;
+        while (lo < hi) {
+            int mid = lo + (hi - lo) / 2;
             if (nums[mid] < target) {
                 lo = mid + 1;
             } else {
@@ -19,12 +19,12 @@ class Solution {
 
         return -1;
     }
-    
+
     public int findRightmost(int[] nums, int target, int lo, int hi) {
         if (lo > hi) return -1;
-        
+
         hi++;
-        int end = hi; 
+        int end = hi;
         while (lo < hi) {
             int mid = lo + (hi - lo) / 2;
             if (target < nums[mid]) {
@@ -37,14 +37,13 @@ class Solution {
         if (lo != end && nums[lo] == target) {
             return lo;
         }
-        
+
         return -1;
     }
-	
-	public int bisectLeft(int[] nums, int target, int lo, int hi) {
+
+    public int bisectLeft(int[] nums, int target, int lo, int hi) {
         hi++;
-        while (lo < hi)
-        {
+        while (lo < hi) {
             int mid = lo + (hi - lo) / 2;
             if (nums[mid] < target) {
                 lo = mid + 1;

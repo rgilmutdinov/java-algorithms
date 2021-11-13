@@ -5,6 +5,7 @@ class Solution {
     private final int BLACK = 2;
 
     private int cycleIndex = 0;
+
     private void findCycles(List<Integer>[] adjList, int u, int p, int[] color, int[] cycle, int[] parents) {
         // already (completely) visited vertex.
         if (color[u] == BLACK) {
@@ -53,6 +54,6 @@ class Solution {
         int[] cycle = new int[n]; // cycle index a vertex belongs to (0 - doesn't belong to any cycle)
         findCycles(adjList, 0, -1, color, cycle, parents);
 
-		return cycle;
+        return cycle;
     }
 }

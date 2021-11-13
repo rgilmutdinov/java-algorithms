@@ -10,7 +10,8 @@ class Solution {
                 }
             }
 
-            if (!exchanges) break;
+            if (!exchanges)
+                break;
         }
 
         return nums;
