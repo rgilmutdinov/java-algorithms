@@ -90,8 +90,6 @@ public static class RUCaches {
 
 		protected void evict() {
 			ListNode<K, V> last = popLast();
-			
-			System.out.println(this);
 			map.remove(last.key);
 		}
 
