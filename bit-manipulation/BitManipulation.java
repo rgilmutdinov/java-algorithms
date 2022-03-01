@@ -47,7 +47,7 @@ public class BitManipulation {
     // Brian Kernighan's way
     public static int countSetBits(int n) {
         int count = 0;
-        while (n > 0) {
+        while (n != 0) {
             n &= (n - 1);
             count++;
         }
@@ -97,5 +97,24 @@ public class BitManipulation {
         v++;
         
         return v;
+    }
+	
+	// count set bits for (n + 1) numbers from range [0, n]
+	public int[] countSetBits(int n) {
+        int[] ans = new int[n + 1];
+        for (int k = 1; k <= n; k++) {
+            ans[k] = ans[k & (k - 1)] + 1;
+        }
+        return ans;
+    }
+	
+	// count set bits for (n + 1) numbers from range [0, n]
+	public int[] countSetBits2(int n) {
+        int[] ans = new int[n + 1];
+        for (int k = 1; k <= n; k++) {
+            // k / 2 is k >> 1 and k % 2 is k & 1
+            ans[k] = ans[k >> 1] + (k & 1); 
+        }
+        return ans;
     }
 }
