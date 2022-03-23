@@ -117,4 +117,20 @@ public class BitManipulation {
         }
         return ans;
     }
+	
+	// reverse bits of an Integer
+	public int reverseBits(int n) {
+        int pos = Integer.SIZE - 1;
+        int reverse = 0;         
+        while (pos >= 0 && n != 0) {            
+            if ((n & 1) != 0) {
+                reverse = reverse | (1 << pos);
+            }
+ 
+            n >>= 1;
+            pos--;
+        }
+ 
+        return reverse;
+    }
 }
