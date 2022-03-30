@@ -69,7 +69,7 @@ class Solution {
         return lo;
     }
 	
-	private int lower(List<Integer> list, int target) {
+    private int lower(List<Integer> list, int target) {
         int lo = 0;
         int hi = list.size();
         while (lo < hi) {
