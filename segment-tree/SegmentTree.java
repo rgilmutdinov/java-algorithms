@@ -2,6 +2,7 @@ public class SegmentTree {
 	
 	private SegmentTreeNode root;
 	
+	// Time-Complexity:  O(n*log(n))
 	public SegmentTree(int[] nums) {
 		root = buildTree(nums, 0, nums.length - 1);
 	}
@@ -25,14 +26,19 @@ public class SegmentTree {
 		}
 	}
 
+	// Range Sum Query
+	// Time-Complexity: O(log(n))
 	public int sumRange(int lo, int hi) {
 		return sumRange(root, lo, hi);
 	}
 
+	// Range Update Operation.
+	// Time-Complexity: O(log(n))
 	public void update(int pos, int val) {
 		update(root, pos, val);
 	}
 	
+	// Time-Complexity:  O(n*log(n))
 	private SegmentTreeNode buildTree(int[] nums, int lo, int hi) {
 		if (lo > hi) {
 			return null;
