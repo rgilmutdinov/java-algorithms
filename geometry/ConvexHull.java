@@ -46,11 +46,12 @@ class Solution {
         return o == Orientation.CLOCKWISE || (includeCollinear && o == Orientation.COLLINEAR);
     }
 
-    // Graham Scan algorithm (n log n)
     private List<Point> convexHull(List<Point> points, boolean includeCollinear) {
         int n = points.size();
         if (n == 0)
             return List.of();
+        if (n == 1)
+            return points;
 
         final Point p0 = Collections.min(points, (p1, p2) -> {
             int cmp = Integer.compare(p1.y, p2.y);
@@ -79,14 +80,18 @@ class Solution {
             reverse(points, i + 1, n - 1);
         }
 
-        List<Point> list = new ArrayList<>();
-        for (int i = 0; i < points.size(); i++) {
-            while (list.size() > 1 && !clockwise(list.get(list.size() - 2), list.get(list.size() - 1), points.get(i), includeCollinear)) {
-                list.remove(list.size() - 1);
+        LinkedList<Point> stack = new LinkedList<>();
+        stack.push(points.get(0));
+        stack.push(points.get(1));
+        for (int i = 2; i < points.size(); i++) {
+            Point top = stack.pop();
+            while (!clockwise(stack.peek(), top, points.get(i), includeCollinear)) {
+                top = stack.pop();
             }
-            list.add(points.get(i));
+            stack.push(top);
+            stack.push(points.get(i));
         }
 
-        return list;
+        return stack;
     }
 }
